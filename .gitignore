@@ -25,3 +25,4 @@ atlassian-ide-plugin.xml
 application.properties
 _book/
 application.yml
+/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data/output/document.md
