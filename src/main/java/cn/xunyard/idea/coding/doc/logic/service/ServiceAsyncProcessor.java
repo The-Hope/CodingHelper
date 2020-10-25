@@ -18,6 +18,8 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
+ * 异步文档生成处理器
+ *
  * @author <a herf="mailto:wuqi@terminus.io">xunyard</a>
  * @date 2019-12-29
  */
@@ -72,6 +74,11 @@ public class ServiceAsyncProcessor implements Runnable {
         return message + "\n" + str;
     }
 
+    /**
+     * 校验输出文件夹是否合法
+     *
+     * @return 是否文件夹非有效目录或已存在并无法删除
+     */
     private boolean checkOutput() {
         String outputDirectory = configuration.getOutputDirectory();
         File file = new File(outputDirectory);

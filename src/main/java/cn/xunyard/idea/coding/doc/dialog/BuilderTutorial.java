@@ -18,11 +18,18 @@ import java.awt.*;
 
 /**
  * @author <a herf="mailto:wuqi@terminus.io">xunyard</a>
+ * @author <a herf="mailto:wangxi@terminus.io>Sivin</a>
  * @date 2019-12-21
  */
 public class BuilderTutorial extends JPanel {
 
+    /**
+     * idea 项目抽象对象
+     */
     private final Project project;
+    /**
+     * 文档构建api
+     */
     private final DocumentBuilderConfiguration configuration;
 
     /**

@@ -10,7 +10,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 文档构建服务
+ *
  * @author <a herf="mailto:wuqi@terminus.io">xunyard</a>
+ * @author <a herf="mailto:wangxi@terminus.io>Sivin</a>
  * @date 2019-12-15
  */
 public class DocumentBuildingService {

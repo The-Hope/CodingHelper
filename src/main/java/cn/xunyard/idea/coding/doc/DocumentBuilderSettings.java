@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * Desc: 插件配置状态持久化类
+ *
  * @author <a herf="mailto:wuqi@terminus.io">xunyard</a>
  * @date 2020-01-07
  */

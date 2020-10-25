@@ -9,7 +9,10 @@ import cn.xunyard.idea.coding.util.AssertUtils;
 import com.google.common.base.Throwables;
 import lombok.RequiredArgsConstructor;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -32,13 +35,7 @@ public class DocumentRender {
         try (FileOutputStream fos = new FileOutputStream(filepath, false)) {
             try (OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
                 try (BufferedWriter bufferedWriter = new BufferedWriter(osw)) {
-                    int serviceIndex = 1;//服务索引
-                    for (ServiceDescriber serviceDescriber : serviceDescriberList) {
-                        renderService(serviceIndex, bufferedWriter, serviceDescriber);
-                        serviceIndex++;
-                    }
-
-                    bufferedWriter.flush();
+                    renderService(bufferedWriter);
                     log.info(String.format("文档生成完成，文档路径: %s", filepath));
                 } catch (Exception e) {
                     log.error("文档生成失败: {}", Throwables.getStackTraceAsString(e));
@@ -51,12 +48,24 @@ public class DocumentRender {
         }
     }
 
+    private void renderService(BufferedWriter bufferedWriter) throws IOException {
+        // 服务索引
+        int serviceIndex = 1;
+        for (ServiceDescriber serviceDescriber : serviceDescriberList) {
+            renderService(serviceIndex, bufferedWriter, serviceDescriber);
+            serviceIndex++;
+        }
+
+        bufferedWriter.flush();
+    }
+
     /**
-     *  生成接口文档
-     * @param serviceIndex
-     * @param fileWriter
-     * @param serviceDescriber
-     * @throws IOException
+     * 生成接口文档
+     *
+     * @param serviceIndex     服务索引编号
+     * @param fileWriter       文档写入器
+     * @param serviceDescriber 服务描述对象
+     * @throws IOException io 异常
      */
     private void renderService(int serviceIndex, BufferedWriter fileWriter, ServiceDescriber serviceDescriber)
             throws IOException {

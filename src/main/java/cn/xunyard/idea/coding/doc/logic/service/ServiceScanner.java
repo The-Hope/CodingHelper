@@ -55,6 +55,7 @@ public class ServiceScanner {
     }
 
     public List<JavaClass> scan(String basePath) {
+        // 扫描并加载配置中的源文件路径
         if (!AssertUtils.isEmpty(processContext.getConfiguration().getSourceInclude())) {
             log.info("开始读取源文件工程...");
             for (String path : processContext.getConfiguration().getSourceInclude()) {
@@ -68,9 +69,15 @@ public class ServiceScanner {
         return scannedServices;
     }
 
+    /**
+     * 扫描类加载
+     *
+     * @param path 包路径
+     */
     private void scanForClassLoader(String path) {
         File file = new File(path);
 
+        // 如果是文件夹，递归下级文件夹继续扫描
         if (file.isDirectory()) {
             String[] children = file.list();
 
@@ -82,6 +89,7 @@ public class ServiceScanner {
                 scanForClassLoader(path + "/" + child);
             }
         } else {
+            // 如果是文件，检查文件后缀无误后加入 loader 内中
             if (!file.exists()) {
                 log.error("检测到无效文件地址:" + path);
                 throw new IllegalArgumentException("invalid.file.path");
@@ -95,6 +103,11 @@ public class ServiceScanner {
         }
     }
 
+    /**
+     * 扫描加载服务类
+     *
+     * @param path 目标地址
+     */
     private void scanSearchService(String path) {
         File file = new File(path);
 
@@ -119,7 +132,8 @@ public class ServiceScanner {
                 throw new IllegalArgumentException("invalid.file.path");
             }
 
-            if (!path.endsWith(processContext.getConfiguration().getFileSuffix()) || !ClassUtils.isSrcClass(path)) {
+            if (!path.endsWith(processContext.getConfiguration().getFileSuffix())
+                    || !(ClassUtils.isSrcClass(path) || ClassUtils.isTestSrcClass(path))) {
                 return;
             }
 

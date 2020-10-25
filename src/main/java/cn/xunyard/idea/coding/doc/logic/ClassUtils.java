@@ -22,9 +22,14 @@ import java.util.List;
 public class ClassUtils {
     private static final Logger log = LoggerFactory.getLogger(ProcessContext.IDENTITY);
     public static final String JAVA_SRC_ROOT = "/src/main/java/";
+    public static final String JAVA_TEST_ROOT = "/src/test/java/";
 
     public static boolean isSrcClass(String fullPath) {
         return !AssertUtils.isEmpty(fullPath) && fullPath.contains(JAVA_SRC_ROOT);
+    }
+
+    public static boolean isTestSrcClass(String fullPath) {
+        return !AssertUtils.isEmpty(fullPath) && fullPath.contains(JAVA_TEST_ROOT);
     }
 
     public static String resolveSrcPackagePath(String fullPath) {

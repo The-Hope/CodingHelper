@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class LoggerFactory {
 
-    private static Map<String, Logger> loggerMap;
+    protected static Map<String, Logger> loggerMap;
 
     public static Logger getLogger(String identityId) {
         if (loggerMap == null) {

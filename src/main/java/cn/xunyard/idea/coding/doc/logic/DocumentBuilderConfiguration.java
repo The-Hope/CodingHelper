@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * Desc:
+ * 文档构建配置类
+ *
  * @author <a herf="mailto:wuqi@terminus.io">xunyard</a>
  * @date 2020-01-06
  */

@@ -6,7 +6,6 @@ import cn.xunyard.idea.coding.doc.logic.describer.ParameterDescriber;
 import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -24,6 +23,7 @@ public class ParameterRender extends AbstractClassRender {
         renderExtendClass(fileWriter, classDescriber, new HashSet<>());
     }
 
+    @Override
     protected void renderParameterClassFields(BufferedWriter fileWriter, ClassDescriber classDescriber) throws IOException {
         if (classDescriber.hasFields()) {
             fileWriter.write("\n参数名|必填|类型|描述|说明\n---|---|---|---|---\n");
