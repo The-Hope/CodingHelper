@@ -1,7 +1,8 @@
-package cn.xunyard.idea.coding.doc.logic.render;
+package cn.xunyard.idea.coding.doc.logic.render.impl;
 
 import cn.xunyard.idea.coding.doc.logic.describer.ClassDescriber;
 import cn.xunyard.idea.coding.doc.logic.describer.FieldDescriber;
+import cn.xunyard.idea.coding.doc.logic.render.AbstractClassRender;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

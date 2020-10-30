@@ -1,8 +1,9 @@
-package cn.xunyard.idea.coding.doc.logic.render;
+package cn.xunyard.idea.coding.doc.logic.render.impl;
 
 import cn.xunyard.idea.coding.doc.logic.describer.ClassDescriber;
 import cn.xunyard.idea.coding.doc.logic.describer.FieldDescriber;
 import cn.xunyard.idea.coding.doc.logic.describer.ParameterDescriber;
+import cn.xunyard.idea.coding.doc.logic.render.AbstractClassRender;
 import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedWriter;
@@ -14,10 +15,9 @@ import java.util.HashSet;
  * @date 2019-12-27
  */
 @RequiredArgsConstructor
-public class ParameterRender extends AbstractClassRender {
+public class ObjectRender extends AbstractClassRender {
 
-    public void renderParameter(BufferedWriter fileWriter, ParameterDescriber parameterDescriber) throws IOException {
-        ClassDescriber classDescriber = parameterDescriber.getClassDescriber();
+    public void renderObject(BufferedWriter fileWriter, ClassDescriber classDescriber) throws IOException {
         renderClassBasic(fileWriter, classDescriber);
         renderParameterClassFields(fileWriter, classDescriber);
         renderExtendClass(fileWriter, classDescriber, new HashSet<>());

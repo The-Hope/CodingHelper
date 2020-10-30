@@ -1,19 +1,16 @@
-package cn.xunyard.idea.coding.doc.logic.render;
+package cn.xunyard.idea.coding.doc.logic.render.impl;
 
 import cn.xunyard.idea.coding.doc.logic.ProcessContext;
 import cn.xunyard.idea.coding.doc.logic.describer.MethodDescriber;
 import cn.xunyard.idea.coding.doc.logic.describer.ServiceDescriber;
+import cn.xunyard.idea.coding.doc.logic.render.BaseDocumentRender;
 import cn.xunyard.idea.coding.log.Logger;
 import cn.xunyard.idea.coding.log.LoggerFactory;
 import cn.xunyard.idea.coding.util.AssertUtils;
-import com.google.common.base.Throwables;
 import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -21,31 +18,26 @@ import java.util.List;
  * @date 2019-12-21
  */
 @RequiredArgsConstructor
-public class DocumentRender {
+public class ServiceDocumentRender extends BaseDocumentRender {
     private final Logger log = LoggerFactory.getLogger(ProcessContext.IDENTITY);
     private final ProcessContext processContext;
     private final List<ServiceDescriber> serviceDescriberList;
     private final ParameterRender parameterRender = new ParameterRender();
     private final ResponseRender responseRender = new ResponseRender();
 
-    public void run() throws IOException {
-        log.info("开始生成文档...");
-        String filepath = processContext.getConfiguration().getOutputDirectory() + "/" +
-                processContext.getConfiguration().getOutputFileName();
-        try (FileOutputStream fos = new FileOutputStream(filepath, false)) {
-            try (OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
-                try (BufferedWriter bufferedWriter = new BufferedWriter(osw)) {
-                    renderService(bufferedWriter);
-                    log.info(String.format("文档生成完成，文档路径: %s", filepath));
-                } catch (Exception e) {
-                    log.error("文档生成失败: {}", Throwables.getStackTraceAsString(e));
-                }
-            } catch (Exception e) {
-                log.error("文件准备失败: {}", Throwables.getStackTraceAsString(e));
-            }
-        } catch (Exception e) {
-            log.error("根节点失败: {}", Throwables.getStackTraceAsString(e));
-        }
+    @Override
+    public Logger getLog() {
+        return log;
+    }
+
+    @Override
+    public ProcessContext getProcessContext() {
+        return processContext;
+    }
+
+    @Override
+    public void doRender(BufferedWriter bufferedWriter) throws IOException {
+        renderService(bufferedWriter);
     }
 
     private void renderService(BufferedWriter bufferedWriter) throws IOException {

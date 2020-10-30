@@ -31,7 +31,7 @@ public class ServiceAsyncProcessorTest {
         Mockito.when(mock.getBasePath()).thenReturn("/Users/terminus/IdeaProjects/CodingHelper/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data");
         ProjectUtils.switchProject(mock);
         // mock 输出目录
-        String outputPath = "/Users/terminus/IdeaProjects/CodingHelper/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data/output";
+        String outputPath = "/Users/terminus/IdeaProjects/CodingHelper/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data/output/service";
         DocumentBuilderConfiguration configuration = new DocumentBuilderConfiguration();
         configuration.setOutputDirectory(outputPath);
 

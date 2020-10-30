@@ -26,6 +26,11 @@ public class DocumentBuilderConfiguration implements Serializable {
     private String serviceSuffix = "Facade";
 
     /**
+     * 对象后缀列表
+     */
+    private List<String> objectSuffixList;
+
+    /**
      * 包路径前缀
      */
     private String packagePrefix;
