@@ -36,21 +36,7 @@ public class ObjectAsyncProcessorTest {
         DocumentBuilderConfiguration configuration = new DocumentBuilderConfiguration();
         configuration.setObjectSuffixList(
                 Lists.newArrayList(
-                        "OrderCloseContext",
-                        "OrderCommentContext",
-                        "OrderDetailQueryContext",
-                        "OrderInfoContext",
-                        "OrderListQueryContext",
-                        "OrderPaymentUpdateContext",
-                        "OrderShopDeliverContext",
-                        "OrderUpdateAfterConfirmContext",
-                        "OrderUpdateAfterReverseCreateContext",
-                        "OrderUpdateAfterReverseStatusChangeContext",
-                        "OrderUpdateAfterShippedContext",
-                        "PurchaseOrderInternalCreateContext",
-                        "PurchaseOrderInternalEnableContext",
-                        "PurchaseOrderInternalUpdateAfterPaidContext",
-                        "PurchaseOrderUpdatePayStatusContext"
+                        "ReturnSellerAuditingContext"
                 )
         );
         configuration.setOutputDirectory(outputPath);

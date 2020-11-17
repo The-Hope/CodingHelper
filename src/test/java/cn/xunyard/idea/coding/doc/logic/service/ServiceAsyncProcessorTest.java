@@ -28,11 +28,13 @@ public class ServiceAsyncProcessorTest {
 
         // mock project
         Project mock = Mockito.mock(Project.class);
-        Mockito.when(mock.getBasePath()).thenReturn("/Users/terminus/IdeaProjects/CodingHelper/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data");
+        Mockito.when(mock.getBasePath()).thenReturn("/Users/terminus/IdeaProjects/parana-trade");
         ProjectUtils.switchProject(mock);
         // mock 输出目录
         String outputPath = "/Users/terminus/IdeaProjects/CodingHelper/src/test/java/cn/xunyard/idea/coding/doc/logic/service/data/output/service";
         DocumentBuilderConfiguration configuration = new DocumentBuilderConfiguration();
+        configuration.setPackagePrefix("io.terminus.parana.trade.reverse.api.facade.buyer");
+        configuration.setServiceSuffix("ReverseReturnBuyerWriteFacade");
         configuration.setOutputDirectory(outputPath);
 
         ServiceAsyncProcessor processor = new ServiceAsyncProcessor(
